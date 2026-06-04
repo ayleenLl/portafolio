@@ -1,11 +1,53 @@
 console.log("El HTML vinculó correctamente el archivo JS y el navegador lo procesó bien");
 
+
+emailjs.init({
+    publicKey: "3pwflaQpqIJ7XmL-p",
+});
+
+
 // Manejo del formulario de contacto sin errores
 const botonEnviar = document.querySelector('.btn-submit');
 if (botonEnviar) {
+
     botonEnviar.addEventListener('click', (evento) => {
         evento.preventDefault();
         console.log("¡El usuario hizo clic en el botón para ENVIAR MENSAJE!");
+        console.log(" este es el valor del id del name" + document.getElementById("nombre").value);
+        console.log(" este es el valor del id del email" + document.getElementById("email").value);
+        console.log(" este es el valor del id del mensaje" + document.getElementById("mensaje").value);
+
+        emailjs.send(
+            "service_jalghah",
+            "template_vfqmaaj",
+
+            {
+                name: document.getElementById("nombre").value,
+                email: document.getElementById("email").value,
+                title: "Nuevo mensaje Portafolio",
+                message: document.getElementById("mensaje").value
+            }
+        )
+            .then(() => {
+
+                const toastElement = document.getElementById('successToast');
+
+                if (typeof bootstrap !== "undefined") {
+
+                    const toast = new bootstrap.Toast(toastElement);
+                    toast.show();
+
+                } else {
+
+                    alert("Correo enviado correctamente");
+                    console.error("Bootstrap no está cargado");
+
+                }
+
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+            });
     });
 }
 
