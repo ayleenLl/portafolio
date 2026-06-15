@@ -362,3 +362,25 @@ footer {
     0% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
     100% { opacity: 0; transform: translate(-50%, -50%) scale(0.1); }
 }
+
+
+#btn-arriba {
+    display: none;           /* oculto al inicio */
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #e0a0c0;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 999;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+#btn-arriba:hover {
+    background-color: #c97aa0;
+}
